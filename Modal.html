@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Modal Pop Up</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--  Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,400i,500,500i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,600i,700" rel="stylesheet">
+
+    <!--  CSS Files -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/preloader.min.css" rel="stylesheet">
+    <link href="css/circle.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/fm.revealator.jquery.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+
+    <!-- Modernizr JS File -->
+    <script src="js/modernizr.custom.js"></script>
+    <!-- main content style -->
+    <style>
+
+        .container {
+            display: flex ;
+            align-items: center;
+            justify-content: center;
+            height: 80vh;
+        }
+
+        .container a {
+            padding: 30px;
+            background:#4169e1;
+            color:black;
+            font-weight: bold;
+            font-size: 24px;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .modal {
+            position: fixed;
+            width: 100vw;
+            height: 100vh;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            top: 0;
+            left: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal.open {
+            visibility: visible;
+            opacity: 1;
+            transition-delay: 0s;
+        }
+
+        .modal-bg {
+            border-radius: 10px;
+            position: absolute;
+            background:#4169e1;
+            width: 60%;
+            height: 60%;
+        }
+
+        .modal-container {
+            border-radius: 10px;
+            background: #fff;
+            color: #4169e1;
+            position: relative;
+            padding: 20px;
+        }
+
+        .modal-close {
+            position: absolute;
+            right: 15px;
+            top: 15px;
+            outline: none;
+            appearance: none;
+            color:#4169e1;
+            background: none;
+            border: 0px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .modal-exit{
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+
+<body class="portfolio">
+
+    <!-- Header Starts -->
+    <header class="header" id="navbar-collapse-toggle">
+        <!-- Fixed Navigation Starts -->
+        <ul class="icon-menu d-none d-lg-block revealator-slideup revealator-delay1">
+            <li class="icon-box">
+                <i class="fa fa-home"></i>
+                <a href="index.html">
+                    <h2>Home</h2>
+                </a>
+            </li>
+            <li class="icon-box">
+                <i class="fa fa-user"></i>
+                <a href="about.html">
+                    <h2>About</h2>
+                </a>
+            </li>
+            <li class="icon-box active">
+                <i class="fa fa-briefcase"></i>
+                <a href="portfolio.html">
+                    <h2>Portfolio</h2>
+                </a>
+            </li>
+            <li class="icon-box">
+                <i class="fa fa-envelope-open"></i>
+                <a href="contact.html">
+                    <h2>Contact</h2>
+                </a>
+            </li>
+            <li class="icon-box">
+                <i class="fa fa-comments"></i>
+                <a href="blog.html">
+                    <h2>Blog</h2>
+                </a>
+            </li>
+        </ul>
+        <!-- Fixed Navigation Ends -->
+        <!-- Mobile Menu Starts -->
+        <nav role="navigation" class="d-block d-lg-none">
+            <div id="menuToggle">
+                <input type="checkbox" />
+                <span></span>
+                <span></span>
+                <span></span>
+                <ul class="list-unstyled" id="menu">
+                    <li><a href="index.html"><i class="fa fa-home"></i><span>Home</span></a></li>
+                    <li><a href="about.html"><i class="fa fa-user"></i><span>About</span></a></li>
+                    <li class="active"><a href="portfolio.html"><i
+                                class="fa fa-folder-open"></i><span>Portfolio</span></a></li>
+                    <li><a href="contact.html"><i class="fa fa-envelope-open"></i><span>Contact</span></a></li>
+                    <li><a href="blog.html"><i class="fa fa-comments"></i><span>Blog</span></a></li>
+                </ul>
+            </div>
+        </nav>
+        <!-- Mobile Menu Ends -->
+    </header>
+    <!-- Header Ends -->
+    <!-- Page Title Starts -->
+    <section class="title-section text-left text-sm-center revealator-slideup revealator-delay1">
+        <h1>my <span>project </span></h1>
+        <span class="title-bg">works</span>
+    </section>
+    <!-- Page Title Ends -->
+    <!-- Main Content Starts -->
+    <div class="container">
+        <a data-modal="modal-one">Open Modal</a>
+    </div>
+
+    <div class="modal" id="modal-one">
+        <div class="modal-bg modal-exit"></div>
+        <div class="modal-container">
+            <h3>Modal</h3>
+            <h4>HTML-CSS-JavaScript</h4>
+            <button class="modal-close modal-exit">X</button>
+        </div>
+    </div>
+    <script>
+        var modals = document.querySelectorAll("[data-modal]");
+
+        modals.forEach(function (trigger) {
+            trigger.addEventListener("click", function (event) {
+                event.preventDefault();
+                var modal = document.getElementById(trigger.dataset.modal);
+                modal.classList.add("open");
+                var exits = modal.querySelectorAll(".modal-exit");
+                exits.forEach(function (exit) {
+                    exit.addEventListener("click", function (event) {
+                        event.preventDefault();
+                        modal.classList.remove("open");
+                    });
+                });
+            });
+        });
+    </script>
+    <!-- Main Content Ends -->
+
+    <!--  JS Files -->
+    <script src="js/jquery-3.5.0.min.js"></script>
+    <script src="js/styleswitcher.js"></script>
+    <script src="js/preloader.min.js"></script>
+    <script src="js/fm.revealator.jquery.min.js"></script>
+    <script src="js/imagesloaded.pkgd.min.js"></script>
+    <script src="js/masonry.pkgd.min.js"></script>
+    <script src="js/classie.js"></script>
+    <script src="js/cbpGridGallery.js"></script>
+    <script src="js/jquery.hoverdir.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/custom.js"></script>
+
+</body>
+
+</html>

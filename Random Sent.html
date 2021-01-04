@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Random Sentence</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--  Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,400i,500,500i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,600i,700" rel="stylesheet">
+
+    <!--  CSS Files -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/preloader.min.css" rel="stylesheet">
+    <link href="css/circle.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/fm.revealator.jquery.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- Modernizr JS File -->
+    <script src="js/modernizr.custom.js"></script>
+    <style>
+        .container {
+            background-color: #4961e1;
+            color: whitesmoke;
+            position: relative;
+            /* margin-top: 10vh; */
+            width: auto;
+            height: 50%;
+            padding-top: 14vh;
+            box-sizing: border-box;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .container p {
+            margin-top: 10vh;
+            padding: 5px;
+            line-height: 1.6;
+            -webkit-hyphens: auto;
+            -moz-hyphens: auto;
+            -ms-hyphens: auto;
+            hyphens: auto;
+            width: 73cr;
+            /* top: 20vh; */
+        }
+
+        h3 {
+            font-size: 40px;
+            text-align: center;
+            margin-right: 20px;
+        }
+
+        button {
+            height: 50px;
+            justify-content: right;
+            outline: none;
+            position: inherit;
+            padding: 10px;
+            width: 120px;
+            left: 100vh;
+            border: none;
+            background-color: #fff;
+            border: 2px solid #1b1b1b;
+            border-radius: 5px;
+            color: #1b1b1b;
+            transition: 500ms ease-in;
+            font-size: 18px;
+            display: flex;
+            justify-content: center;
+        }
+
+        button i {
+            margin-left: 3px;
+        }
+
+        button:hover {
+            color: #fff;
+            background-color: #1b1b1b;
+        }
+
+        .container:first-child {
+            height: 30vh !important;
+        }
+    </style>
+</head>
+
+<body class="portfolio">
+
+    <!-- Header Starts -->
+    <header class="header" id="navbar-collapse-toggle">
+        <!-- Fixed Navigation Starts -->
+        <ul class="icon-menu d-none d-lg-block revealator-slideup revealator-delay1">
+            <li class="icon-box">
+                <i class="fa fa-home"></i>
+                <a href="index.html">
+                    <h2>Home</h2>
+                </a>
+            </li>
+            <li class="icon-box">
+                <i class="fa fa-user"></i>
+                <a href="about.html">
+                    <h2>About</h2>
+                </a>
+            </li>
+            <li class="icon-box active">
+                <i class="fa fa-briefcase"></i>
+                <a href="portfolio.html">
+                    <h2>Portfolio</h2>
+                </a>
+            </li>
+            <li class="icon-box">
+                <i class="fa fa-envelope-open"></i>
+                <a href="contact.html">
+                    <h2>Contact</h2>
+                </a>
+            </li>
+            <li class="icon-box">
+                <i class="fa fa-comments"></i>
+                <a href="blog.html">
+                    <h2>Blog</h2>
+                </a>
+            </li>
+        </ul>
+        <!-- Fixed Navigation Ends -->
+        <!-- Mobile Menu Starts -->
+        <nav role="navigation" class="d-block d-lg-none">
+            <div id="menuToggle">
+                <input type="checkbox" />
+                <span></span>
+                <span></span>
+                <span></span>
+                <ul class="list-unstyled" id="menu">
+                    <li><a href="index.html"><i class="fa fa-home"></i><span>Home</span></a></li>
+                    <li><a href="about.html"><i class="fa fa-user"></i><span>About</span></a></li>
+                    <li class="active"><a href="portfolio.html"><i
+                                class="fa fa-folder-open"></i><span>Portfolio</span></a></li>
+                    <li><a href="contact.html"><i class="fa fa-envelope-open"></i><span>Contact</span></a></li>
+                    <li><a href="blog.html"><i class="fa fa-comments"></i><span>Blog</span></a></li>
+                </ul>
+            </div>
+        </nav>
+        <!-- Mobile Menu Ends -->
+    </header>
+    <!-- Header Ends -->
+    <!-- Page Title Starts -->
+    <section class="title-section text-left text-sm-center revealator-slideup revealator-delay1">
+        <h1>my <span>project</span></h1>
+        <span class="title-bg">works</span>
+    </section>
+    <!-- Page Title Ends -->
+    <!-- Main Content Starts -->
+
+    <div class="container">
+        <div style="box-sizing:border-box;display:flex;justify-content:center;align-items:center">
+            <h3> Sentence Generator</h3>
+            <button onclick="sentence()">Refresh</button>
+        </div>
+        <p id="sentence"></p>
+    </div>
+    <script>
+        var verbs, nouns, adjectives, preposition;
+        nouns = ["шувуу", "цаг", "хүү", "охин", "галуу", "багш", "хатагтай", "професор", "нугас", "нохой"];
+        verbs = ["цохисон", "гүйсэн", "ниссэн", "бултсан", "хуваасан", "ороосон", "уурласан", "амьсгалсан", "унтсан",
+            "нийлүүлсэн"
+        ];
+        adjectives = ["хөөрхөн", "залхуу", "мэргэжлийн", "хайрт", "ухаантай", "шулуун", "зөөлөн", "халуун", "галзуу",
+            "туранхай"
+        ];
+        preposition = ["доор", "дотор", "дээр", "дээд талд", "дээр нь", "доор", "өмнө", "хажууд", "хөндлөн", "зүгт"];
+
+        function randGen() {
+            return Math.floor(Math.random() * 5);
+        }
+
+        function sentence() {
+            var rand1 = Math.floor(Math.random() * 10);
+            var rand2 = Math.floor(Math.random() * 10);
+            var rand3 = Math.floor(Math.random() * 10);
+            var rand4 = Math.floor(Math.random() * 10);
+            var rand5 = Math.floor(Math.random() * 10);
+            var rand6 = Math.floor(Math.random() * 10);
+            var content = adjectives[rand1] + " " + nouns[rand2] + " " + verbs[rand4] +
+                " учир нь " + nouns[rand1] + " " + verbs[rand1] + " " + preposition[rand1] +
+                "  " + adjectives[rand2] + " " + nouns[rand5] + "  " + adjectives[rand3] + " " +
+                adjectives[rand4] + " " + nouns[rand6] + " " + verbs[rand3] + ".";
+
+            document.getElementById('sentence').innerHTML = "&quot;" + content + "&quot;";
+        };
+        sentence();
+    </script>
+
+    <!-- Main Content Ends -->
+
+    <!--  JS Files -->
+    <script src="js/jquery-3.5.0.min.js"></script>
+    <script src="js/styleswitcher.js"></script>
+    <script src="js/preloader.min.js"></script>
+    <script src="js/fm.revealator.jquery.min.js"></script>
+    <script src="js/imagesloaded.pkgd.min.js"></script>
+    <script src="js/masonry.pkgd.min.js"></script>
+    <script src="js/classie.js"></script>
+    <script src="js/cbpGridGallery.js"></script>
+    <script src="js/jquery.hoverdir.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/custom.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>bazargurev</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--  Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,400i,500,500i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,600i,700" rel="stylesheet">
+
+    <!--  CSS Files -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/preloader.min.css" rel="stylesheet">
+    <link href="css/circle.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/fm.revealator.jquery.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- Modernizr JS File -->
+    <script src="js/modernizr.custom.js"></script>
+    <style>
+        #oyun-panel {
+            width: 50%;
+            height: 50%;
+            background: #4961e1;
+            padding: 16px;
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 50px;
+            border-radius: 5px;
+        }
+
+        h3 {
+            margin: 0 0 16px 0;
+            border: solid 1px #fff;
+            border-radius: 5px;
+            padding: 5px;
+            font-weight: 300;
+            font: 2.5em sans-serif;
+        }
+
+        #total {
+            width: 50px;
+        }
+
+        #check {
+            margin-top: 10px;
+            padding: 5px;
+            border: none;
+            width: 100px;
+            background: #0288D1;
+            color: #fff;
+            border-radius: 5px;
+        }
+
+        #check:hover {
+            background: darkblue;
+        }
+
+        #tru,
+        #fals {
+            font-size: 150%;
+            margin-top: 10px;
+            padding: 10px;
+            display: inline-block;
+        }
+
+        #tru {
+            background: darkcyan;
+        }
+
+        #fals {
+            background: #812727;
+        }
+    </style>
+</head>
+
+<body class="portfolio">
+
+    <!-- Header Starts -->
+    <header class="header" id="navbar-collapse-toggle">
+        <!-- Fixed Navigation Starts -->
+        <ul class="icon-menu d-none d-lg-block revealator-slideup revealator-delay1">
+            <li class="icon-box">
+                <i class="fa fa-home"></i>
+                <a href="index.html">
+                    <h2>Home</h2>
+                </a>
+            </li>
+            <li class="icon-box">
+                <i class="fa fa-user"></i>
+                <a href="about.html">
+                    <h2>About</h2>
+                </a>
+            </li>
+            <li class="icon-box active">
+                <i class="fa fa-briefcase"></i>
+                <a href="portfolio.html">
+                    <h2>Portfolio</h2>
+                </a>
+            </li>
+            <li class="icon-box">
+                <i class="fa fa-envelope-open"></i>
+                <a href="contact.html">
+                    <h2>Contact</h2>
+                </a>
+            </li>
+            <li class="icon-box">
+                <i class="fa fa-comments"></i>
+                <a href="blog.html">
+                    <h2>Blog</h2>
+                </a>
+            </li>
+        </ul>
+        <!-- Fixed Navigation Ends -->
+        <!-- Mobile Menu Starts -->
+        <nav role="navigation" class="d-block d-lg-none">
+            <div id="menuToggle">
+                <input type="checkbox" />
+                <span></span>
+                <span></span>
+                <span></span>
+                <ul class="list-unstyled" id="menu">
+                    <li><a href="index.html"><i class="fa fa-home"></i><span>Home</span></a></li>
+                    <li><a href="about.html"><i class="fa fa-user"></i><span>About</span></a></li>
+                    <li class="active"><a href="portfolio.html"><i
+                                class="fa fa-folder-open"></i><span>Portfolio</span></a></li>
+                    <li><a href="contact.html"><i class="fa fa-envelope-open"></i><span>Contact</span></a></li>
+                    <li><a href="blog.html"><i class="fa fa-comments"></i><span>Blog</span></a></li>
+                </ul>
+            </div>
+        </nav>
+        <!-- Mobile Menu Ends -->
+    </header>
+    <!-- Header Ends -->
+    <!-- Page Title Starts -->
+    <section class="title-section text-left text-sm-center revealator-slideup revealator-delay1">
+        <h1>my <span>project</span></h1>
+        <span class="title-bg">works</span>
+    </section>
+    <!-- Page Title Ends -->
+    <!-- Main Content Starts -->
+    <div id="oyun-panel">
+        <h3>Basic Arithmetic Math Game</h3>
+        <span id="number1">0</span>
+        <span id="opt">+</span>
+        <span id="number2">0</span>
+        <span>=</span>
+        <input type="text" id="total">
+        <input type="button" id="check" value="check">
+        <div style="clear:both"></div>
+        <div id="tru">0</div>
+        <div id="fals">0</div>
+        <div style="clear:both"></div>
+    </div>
+    <script>
+        var number1, number2, tru = 0,
+            fals = 0,
+            total, check, opt;
+
+        number1 = document.getElementById("number1");
+        number2 = document.getElementById("number2");
+        opt = document.getElementById("opt");
+        total = document.getElementById("total");
+        check = document.getElementById("check");
+        tru = document.getElementById("tru");
+        fals = document.getElementById("fals");
+
+        Math.rand = function (down, up) {
+            let number = Math.random();
+            number = number * (up - down);
+            number = Math.floor(number) + down;
+
+            return number;
+        }
+
+        function newquestion() {
+            let operation = ["+", "-", "*", "/"];
+            opt.textContent = operation[Math.rand(0, 4)];
+
+            number1.textContent = Math.rand(0, 50);
+            number2.textContent = Math.rand(0, 50);
+            if (opt.textContent == "/") {
+
+                while (true) {
+                    number2.textContent = Math.rand(0, 50);
+                    if (number1.textContent % number2.textContent == 0) {
+                        break;
+                    }
+                }
+            }
+
+        }
+
+        window.onload = function () {
+
+            newquestion();
+
+        }
+
+        check.onclick = function () {
+            let answer, n1, n2;
+            n1 = Number(number1.textContent);
+            n2 = Number(number2.textContent);
+            switch (opt.textContent) {
+                case '+':
+                    answer = n1 + n2;
+                    break;
+                case "-":
+                    answer = n1 - n2;
+                    break;
+                case "*":
+                    answer = n1 * n2;
+                    break;
+                case "/":
+                    answer = n1 / n2;
+                    break;
+                default:
+                    break;
+            }
+
+            if (total.value == answer) {
+                tru.textContent = Number(tru.textContent) + 1;
+            } else {
+                fals.textContent = Number(fals.textContent) + 1;
+            }
+
+            newquestion();
+        }
+    </script>
+
+    <!-- Main Content Ends -->
+
+    <!--  JS Files -->
+    <script src="js/jquery-3.5.0.min.js"></script>
+    <script src="js/styleswitcher.js"></script>
+    <script src="js/preloader.min.js"></script>
+    <script src="js/fm.revealator.jquery.min.js"></script>
+    <script src="js/imagesloaded.pkgd.min.js"></script>
+    <script src="js/masonry.pkgd.min.js"></script>
+    <script src="js/classie.js"></script>
+    <script src="js/cbpGridGallery.js"></script>
+    <script src="js/jquery.hoverdir.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/custom.js"></script>
+
+</body>
+
+</html>
